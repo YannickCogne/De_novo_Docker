@@ -1,6 +1,5 @@
 FROM ycogne/start_inutano_bridger
 MAINTAINER Yannick Cogne
-RUN cd /src 
 RUN wget http://netix.dl.sourceforge.net/project/transcriptomeassembly/BinPacker_1.0.tar.gz
 RUN tar xvf BinPacker_1.0.tar.gz
 RUN cd ./BinPacker_1.0 && ./configure && make 
@@ -12,3 +11,5 @@ RUN conda config --add channels r
 RUN conda config --add channels conda-forge
 RUN conda config --add channels bioconda
 RUN conda install oases Trinity spades
+VOLUME ["/output/", "/input/"]
+CMD ["/bin/bash"]
